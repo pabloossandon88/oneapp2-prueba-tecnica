@@ -1,208 +1,54 @@
-# Prueba Técnica - Desarrollador Full Stack
+# Dashboard de Respuestas – Prueba Técnica
 
-## 📋 Descripción General
+## Sobre el proyecto
 
-Esta prueba técnica evalúa tus habilidades para desarrollar una aplicación full stack completa que incluye frontend, backend y base de datos. Deberás crear un sistema de formularios con dashboard para visualizar las respuestas.
+Esta prueba técnica fue una experiencia muy entretenida y enriquecedora para mí, donde pude demostrar mis habilidades tanto en desarrollo frontend como backend utilizando tecnologías modernas.
 
-## 🎯 Objetivo
+Para el backend implementé una API REST con Express (Node.js), gestionando las respuestas en una única tabla que almacena toda la información (email, lenguaje, motivación y fecha). Aunque idealmente podría haberse separado la información de tecnologías en una tabla aparte para mayor normalización y escalabilidad, decidí optar por esta solución más directa para avanzar más rápido y cumplir con los tiempos.
 
-Crear un sistema completo que permita a los usuarios responder un cuestionario y visualizar estadísticas de las respuestas a través de un dashboard administrativo.
+En el frontend usé Next.js con TypeScript y Tailwind CSS para construir un dashboard responsivo que muestra estadísticas clave de las respuestas: total, distribución por lenguaje y los registros más recientes. Además, agregué una visualización gráfica tipo barras usando rechart, para darle más dinamismo y claridad a los datos.
 
-## 📝 Requerimientos Funcionales
+A pesar de que hay varias mejoras posibles (como añadir autenticación, mejorar validaciones, o normalizar la base de datos), considero que esta versión cumple los objetivos de manera eficiente y es una buena base para futuros desarrollos.
 
-### 1. **Formulario de Respuestas**
+## Tecnologías usadas
 
-Debes crear un formulario que contenga **exactamente** las siguientes preguntas:
+- Backend: Express (Node.js), base de datos SQL (puede ser SQLite, MySQL, PostgreSQL, según configuración)
+- Frontend: Next.js (App Router), TypeScript, Tailwind CSS
+- Gráficos: recharts
 
-#### **Pregunta 1: Texto Libre (OPCIONAL)**
-- **Pregunta**: "¿Qué te motivó a aplicar a esta posición?"
-- **Tipo**: Campo de texto libre
-- **Validación**: Opcional (puede quedar vacío)
+## Instalación y ejecución
 
-#### **Pregunta 2: Selección Múltiple (OBLIGATORIA)**
-- **Pregunta**: "¿Cuál es tu lenguaje de programación favorito?"
-- **Tipo**: Selección múltiple (radio buttons o select)
-- **Opciones**:
-  - JavaScript
-  - Python
-  - Java
-  - C#
-  - Otro
-- **Validación**: Obligatoria (debe seleccionar una opción)
+### Backend
 
-#### **Campo de Identificación (OBLIGATORIO)**
-- **Campo**: Correo electrónico
-- **Validación**: 
-  - Obligatorio
-  - Formato de email válido
-  - **Un usuario no puede enviar más de una respuesta** (validar por email)
+1. Navega a la carpeta backend:
 
-### 2. **Dashboard de Estadísticas**
+   ```bash
+   cd backend/
 
-Crear una vista de dashboard que muestre:
+Instala las dependencias:
 
-#### **Componente 1: Contador de Respuestas**
-- Mostrar el número total de respuestas almacenadas en la base de datos
+```npm install
 
-#### **Componente 2: Últimos Usuarios**
-- Lista de los últimos 5 usuarios que han respondido el formulario
-- Mostrar: email y fecha/hora de respuesta
-- **Funcionalidad adicional**: Al hacer clic en cualquier usuario, mostrar su respuesta a la pregunta de texto
+Ejecuta el servidor:
 
-#### **Componente 3: Estadísticas de Selección Múltiple**
-- Gráfico o tabla que muestre cuántas veces se ha seleccionado cada opción
-- Ejemplo:
-  - JavaScript: 15 respuestas
-  - Python: 8 respuestas
-  - Java: 3 respuestas
-  - C#: 2 respuestas
-  - Otro: 1 respuesta
+```npm run nodemon
+(O el comando que uses para levantar el servidor Express)
 
-## 🏗️ Arquitectura Técnica
+Frontend
+Navega a la carpeta frontend:
 
-### **Frontend**
-- **Tecnología**: Next.js (ya configurado)
-- **Ubicación**: Carpeta `frontend/`
-- **Funcionalidades**:
-  - Página del formulario
-  - Página del dashboard
-  - Navegación entre ambas páginas
-  - Validaciones en tiempo real
-  - Comunicación con el backend via API
+```cd frontend/
+Instala las dependencias:
 
-### **Backend**
-- **Tecnología**: Node.js con Express (ya configurado)
-- **Ubicación**: Carpeta `backend-service/`
-- **Endpoints requeridos**:
-  ```
-  POST /api/responses          # Enviar nueva respuesta
-  GET  /api/responses/count    # Obtener total de respuestas
-  GET  /api/responses/recent   # Obtener últimas 5 respuestas
-  GET  /api/responses/stats    # Estadísticas de selección múltiple
-  GET  /api/responses/:email   # Obtener respuesta específica por email
-  ```
+```npm install
+Ejecuta el proyecto:
 
-### **Base de Datos**
-- **Tecnología**: A tu elección (PostgreSQL, MySQL, MongoDB, SQLite, etc.)
+```npm run dev
 
-## ✅ Criterios de Evaluación
+###Notas finales
+Asegúrate de que el backend esté corriendo en http://localhost:3001 (o el puerto que uses) para que el frontend pueda consumir la API correctamente.
 
-### **Funcionalidad**
-- ✅ El formulario funciona correctamente
-- ✅ Las validaciones se implementan según especificaciones
-- ✅ No se permiten respuestas duplicadas por email
-- ✅ El dashboard muestra toda la información requerida
-- ✅ La interacción entre componentes funciona
+El proyecto podria mejorar con optimización de modelos y mejoras en la interfaz.
 
-### **Código y Arquitectura**
-- ✅ Código limpio y bien estructurado
-- ✅ Separación correcta entre frontend y backend
-- ✅ Manejo adecuado de errores
-- ✅ Uso correcto de las tecnologías proporcionadas
+Disfruté mucho realizar esta prueba técnica y espero seguir aplicando y ampliando estos conocimientos en próximos proyectos.
 
-### **Base de Datos**
-- ✅ Diseño apropiado de la base de datos
-- ✅ Queries eficientes
-- ✅ Integridad de datos garantizada
-
-### **Extras**
-- ✅ Interfaz de usuario atractiva
-- ✅ Responsive design
-- ✅ Manejo de estados de carga
-- ✅ Documentación adicional
-
-## 🚀 Instrucciones de Desarrollo
-
-### **1. Configuración Inicial**
-```bash
-# Instalar dependencias del frontend
-cd frontend
-npm install
-
-# Instalar dependencias del backend
-cd ../backend-service
-npm install
-```
-
-### **2. Base de Datos**
-- Configura la base de datos de tu elección
-- Crea las tablas necesarias
-- Configura la conexión en el backend
-
-### **3. Desarrollo Backend**
-- Implementa los endpoints requeridos
-- Configura middleware para CORS
-- Implementa validaciones
-- Maneja errores apropiadamente
-
-### **4. Desarrollo Frontend**
-- Crea la página del formulario
-- Crea la página del dashboard
-- Implementa la navegación
-- Conecta con los endpoints del backend
-
-### **5. Pruebas**
-- Prueba el flujo completo
-- Verifica todas las validaciones
-- Asegúrate de que el dashboard funcione correctamente
-
-## 📦 Entregables
-
-### **Código**
-- Todo el código fuente en las carpetas correspondientes
-- Archivo de configuración de base de datos
-- Instrucciones de instalación y configuración
-
-### **Documentación**
-- README actualizado con instrucciones específicas de tu implementación
-- Documentación de endpoints de API
-- Esquema de base de datos
-
-### **Demo**
-- Aplicación funcionando completamente
-- Datos de prueba en la base de datos
-- Screenshots demostrativos (opcional)
-
-## 🔧 Estructura de Archivos Recomendada
-
-```
-proyecto/
-├── frontend/                 # Ya existe
-│   ├── src/
-│   │   ├── app/
-│   │   │   ├── form/        # Nueva: Página del formulario
-│   │   │   ├── dashboard/   # Nueva: Página del dashboard
-│   │   │   └── page.tsx     # Modificar: Página de inicio
-│   │   ├── components/      # Nuevos componentes
-│   │   └── services/        # Servicios de API
-├── backend-service/         # Ya existe
-│   ├── src/
-│   │   ├── routes/          # Nuevas rutas de API
-│   │   ├── models/          # Modelos de base de datos
-│   │   └── handlers/        # Lógica de negocio
-└── database/                # Nueva: Scripts y configuración
-    ├── migrations/
-    └── seeds/
-```
-
-## ❓ Preguntas Frecuentes
-
-**Q: ¿Puedo usar librerías adicionales?**
-A: Sí, puedes agregar las librerías que consideres necesarias.
-
-**Q: ¿Qué pasa si no termino en el tiempo estimado?**
-A: Entrega lo que hayas completado y documenta qué faltaría implementar.
-
-**Q: ¿Puedo cambiar las tecnologías base?**
-A: Debes usar Next.js para frontend y Node.js para backend. La base de datos es libre.
-
-**Q: ¿Necesito implementar autenticación?**
-A: No, solo validación por email para evitar respuestas duplicadas.
-
----
-
-## 🎉 ¡Buena Suerte!
-
-Esta prueba está diseñada para evaluar tus habilidades técnicas de manera integral. Tómate tu tiempo para entender bien los requerimientos antes de comenzar a codificar.
-
-**Contacto**: Si tienes dudas sobre los requerimientos, no dudes en preguntar.
