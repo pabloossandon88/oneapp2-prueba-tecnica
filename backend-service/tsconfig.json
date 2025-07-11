@@ -3,7 +3,7 @@
     "target": "ES2018",
     "module": "CommonJS",
     "moduleResolution": "node",
-    "outDir": "dist",
+    "outDir": "./dist",
     "rootDir": "./src",
     "strict": true,
     "noEmitOnError": true,
@@ -20,5 +20,6 @@
     "node_modules",
     ".serverless",
     "dist"
-  ]
+  ],
+  "start": "ts-node src/index.ts"
 }
